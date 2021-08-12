@@ -1,0 +1,23 @@
+{
+  "name": "com.capabilitieslab.rude",
+  "version": "1.0.0",
+  "displayName": "RUDE",
+  "description": "This is unity package created for VMASC.",
+  "unity": "2021.1",
+  "unityRelease": "7f1",
+  "documentationUrl": "https://CapabilitiesLab@dev.azure.com/CapabilitiesLab/RUDE/_git/RUDE",
+  "changelogUrl": "https://CapabilitiesLab@dev.azure.com/CapabilitiesLab/RUDE/_git/RUDE",
+  "licensesUrl": "https://CapabilitiesLab@dev.azure.com/CapabilitiesLab/RUDE/_git/RUDE",
+  "repository": {
+    "type": "git",
+    "url": "https://CapabilitiesLab@dev.azure.com/CapabilitiesLab/RUDE/_git/RUDE"
+  },
+  "dependencies": {},
+  "samples": [
+    {
+      "displayName": "Demo",
+      "description": "Demo",
+      "path": "Samples~/Demo/"
+    }
+  ]
+}
