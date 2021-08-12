@@ -22,6 +22,7 @@ namespace VMASC.Logger
         public string lastName;
         public MyDate dateOfBirth;
     }
+    
     public class LogUI : MonoBehaviour
     {
         [SerializeField]
@@ -35,7 +36,7 @@ namespace VMASC.Logger
 
         LogBase logBase;
 
-        public static string connectionString = "DefaultEndpointsProtocol=https;AccountName=rudeblobtesting;AccountKey=Vo1nh1aiEvfFZKJUMmK2fUX6geOaJzJz/OJ+JxNL8qa8GRk44u7DmazfgDW8DiHbFWhqOMKP5xVCBiU4G9N5pA==;EndpointSuffix=core.windows.net";
+        public static string connectionString = "<key here>";
         private LogEvents logEvent;
         public KeyCode LogEventTriggerKey = KeyCode.Space;
         string datetimeFormat = "MM/dd/yyyy HH:mm:ss";
