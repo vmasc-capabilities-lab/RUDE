@@ -1,0 +1,3 @@
+[lfs]
+	dialtimeout = 1800
+	activitytimeout = 1800
