@@ -15,9 +15,9 @@
   "dependencies": {},
   "samples": [
     {
-      "displayName": "Demo",
-      "description": "Demo",
-      "path": "Samples~/Demo/"
+      "displayName": "Rude Manager Prefab",
+      "description": "Contains prefab of Events Manager",
+      "path": "Samples~/Prefabs/"
     }
   ]
 }
