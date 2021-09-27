@@ -40,8 +40,9 @@ public class EventsManager : MonoBehaviour
 
     private void Start() {
 
-        logger = new Log(Study);
-        logger.initPath(Application.persistentDataPath);
+        logger = new Log(Study, Application.persistentDataPath.ToString());
+        Debug.Log(Application.persistentDataPath);
+        Debug.Log(logger.initPath());
 
     }
 
