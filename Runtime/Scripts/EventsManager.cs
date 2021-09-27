@@ -41,6 +41,7 @@ public class EventsManager : MonoBehaviour
     private void Start() {
 
         logger = new Log(Study);
+        logger.initPath(Application.persistentDataPath);
 
     }
 
