@@ -27,7 +27,7 @@ public class EventsManager : MonoBehaviour
     public string ConnectionString;
 
     [SerializeField]
-    public File FileTpUpload;
+    public File UploadFileType;
 
     public void Awake()     //Allow Player to move from scene to scene
     {
@@ -42,7 +42,6 @@ public class EventsManager : MonoBehaviour
 
         logger = new Log(Study, Application.persistentDataPath.ToString());
         Debug.Log(Application.persistentDataPath);
-        Debug.Log(logger.initPath());
 
     }
 
@@ -50,7 +49,7 @@ public class EventsManager : MonoBehaviour
 
         if(!String.IsNullOrEmpty(ConnectionString))
         {
-            logger.uploadAzure(FileTpUpload.ToString(), ConnectionString);            
+            logger.uploadAzure(UploadFileType.ToString(), ConnectionString);            
         }
 
         

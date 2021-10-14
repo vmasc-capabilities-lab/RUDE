@@ -4,18 +4,22 @@ using UnityEngine;
 using UnityEngine.Events;
 using RUDE;
 
+/// <summary>
+/// Enum for drop down list in editor
+/// </summary>
 public enum Verb
 {
-    OnMouseDown, OnMouseDrag, OnMouseEnter, OnMouseExit, OnMouseOver, OnCollisionEnter, OnCollisionExit, OnCollisionStay, OnDestroy, OnTriggerEnter, OnTriggerExit,
+    OnMouseDown, OnMouseDrag, OnMouseEnter, OnMouseExit, OnMouseOver, OnCollisionEnter, OnCollisionExit, OnCollisionStay, OnDestroy, OnCreate,  OnTriggerEnter, OnTriggerExit,
     OnTriggerStay, OnEnable, OnDisable, OnScroll
 }
 
 
 public class EventLogger : MonoBehaviour
 {
-    // [SerializeField]
-    // public LogEvent aLogEvent;
+
     public string Subject;
+
+    public string Object;
 
     public string Payload;
 
@@ -24,11 +28,33 @@ public class EventLogger : MonoBehaviour
     [SerializeField]
     public Verb Options;
 
+    /// flag for object created fir onCreate
+    private bool created = false;
+    /// flag for manager object created for onEnable
+    private bool onManager = false;
+
     private void Start() 
     {
 
+        // Finds RudeManager instance for logger object
         GameObject tempObj = GameObject.Find("RudeManager");
         eventManagerInstance = tempObj.GetComponent<EventsManager>();
+
+
+        onManager = true;
+
+    }
+
+    private void Update() 
+    {
+        if(Options == Verb.OnCreate)
+        {
+            if(this.gameObject.scene.IsValid() && !created)
+            {
+                eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
+                created = true;
+            }
+        } 
 
     }
 
@@ -36,8 +62,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnMouseDown)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }
 
     }
@@ -46,8 +71,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnMouseDrag)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }        
     }
 
@@ -55,8 +79,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnCollisionEnter)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }        
     }
 
@@ -64,8 +87,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnMouseExit)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }        
     }
 
@@ -73,8 +95,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnMouseOver)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }        
     }
 
@@ -82,8 +103,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnCollisionEnter)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }
     }
 
@@ -91,8 +111,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnCollisionExit)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }        
     }
 
@@ -100,8 +119,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnCollisionStay)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }        
     }
 
@@ -110,8 +128,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnDestroy)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }             
     }
 
@@ -119,8 +136,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnTriggerEnter)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }      
     }
 
@@ -128,8 +144,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnCollisionExit)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }        
     }
 
@@ -137,17 +152,15 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnCollisionStay)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }        
     }
 
     private void OnEnable() 
     {
-        if(Options == Verb.OnDisable)
+        if(Options == Verb.OnEnable && onManager)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }        
     }
 
@@ -155,8 +168,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnDisable)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }        
     }
 
@@ -164,8 +176,7 @@ public class EventLogger : MonoBehaviour
     {
         if(Options == Verb.OnScroll)
         {
-            eventManagerInstance.logger.LogEvent(Subject, Payload);
-            Debug.Log("LOGGED");
+            eventManagerInstance.logger.LogEvent(Subject, Object, Payload);
         }
     }
 
