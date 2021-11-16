@@ -1,3 +1,7 @@
+<p align="center">
+     <img src="https://github.com/vmasc-capabilities-lab/RUDE/blob/main/github/RUDE_Black.png" height="150" alt="Main Map"/>
+</p>
+
 # RUDE Description
 
 ## Team Members
@@ -7,7 +11,7 @@
   * Role(s): 
 * [Joel Stokes](https://github.com/jstokesVMASC)
   * Role(s): 
-* Patrick Ball
+* [Patrick Ball](https://github.com/p1ball)
   * Role(s): 
 
 
