@@ -3,6 +3,13 @@
 </p>
 
 # RUDE Description
+The Research Unity Data Extractor is a dynamic logging system used to read and print out events that occur within a Unity Scene.
+
+## Installation Guide
+
+### Via Unity Package
+
+### Via Command Line
 
 ## Team Members
 * [Alex Nielsen](https://github.com/ACNielsen)
