@@ -8,19 +8,19 @@ The Research Unity Data Extractor is a dynamic logging system used to read and p
 ## Installation Guide
 
 ### Via Unity Package
+By loading this repository with the Package Manager in Unity, all necessary components to run the RUDE Logger will automatically be installed. Check out the Installation page for detailed information.
 
-### Via Command Line
+### Via Import DLLs
+Unfortunately at this time, RUDE use is not supported outside of Unity. Future plans to let the base C# logger class be used with any version of .Net are coming in future plans. Please check out the Future Development section for more info.
 
 ## Team Members
 * [Alex Nielsen](https://github.com/ACNielsen)
-  * Role(s): 
+  * Role(s): Project Owner
 * [Brandon Feldhaus](https://github.com/BrandonFeldhaus)
-  * Role(s): 
-* [Joel Stokes](https://github.com/jstokesVMASC)
-  * Role(s): 
+  * Role(s): Backend, Core Logger API & Design
+* [Joel Stokes](https://github.com/joelstokes)
+  * Role(s): Unity Development, Documentation
 * [Patrick Ball](https://github.com/p1ball)
-  * Role(s): 
-
-
-### Current Project Status
-
+  * Role(s): Art, Modeling, Documentation
+* Dr. Andrew Kissel
+  * Role(s): Subject Matter Expert
