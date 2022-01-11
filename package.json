@@ -17,7 +17,12 @@
     {
       "displayName": "Rude Manager Prefab",
       "description": "Contains prefab of Events Manager",
-      "path": "Samples~/Prefabs/"
+      "path": "Samples~/Rude_Manager_Prefab/"
+    },
+    {
+      "displayName": "Demo Scene",
+      "description": "Contains Demo Scene",
+      "path": "Samples~/Demo/"
     }
     
   ]
