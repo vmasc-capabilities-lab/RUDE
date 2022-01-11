@@ -13,7 +13,7 @@ public class DemoEventLogger : MonoBehaviour
 
     public string Payload;
 
-    private EventsManager eventManagerInstance = null;
+    private DemoEventsManager eventManagerInstance = null;
 
     [SerializeField]
     public VerbEnum Options;
@@ -28,7 +28,7 @@ public class DemoEventLogger : MonoBehaviour
 
         // Finds RudeManager instance for logger object
         GameObject tempObj = GameObject.Find("RudeManager");
-        eventManagerInstance = tempObj.GetComponent<EventsManager>();
+        eventManagerInstance = tempObj.GetComponent<DemoEventsManager>();
 
 
         onManager = true;
