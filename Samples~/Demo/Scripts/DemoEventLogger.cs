@@ -4,18 +4,26 @@ using UnityEngine;
 using UnityEngine.Events;
 using RUDE;
 
+[HelpURL("https://github.com/vmasc-capabilities-lab/RUDE/wiki")]
 public class DemoEventLogger : MonoBehaviour
 {
 
+    [SerializeField]
+    [Tooltip("Tooltip goes here!")]
     public string Verb;
 
+    [SerializeField]
+    [Tooltip("Tooltip goes here!")]
     public string Object;
 
+    [SerializeField]
+    [Tooltip("Tooltip goes here!")]
     public string Payload;
 
     private DemoEventsManager eventManagerInstance = null;
 
     [SerializeField]
+    [Tooltip("Tooltip goes here!")]
     public VerbEnum Options;
 
     /// flag for object created fir onCreate
@@ -23,11 +31,14 @@ public class DemoEventLogger : MonoBehaviour
     /// flag for manager object created for onEnable
     private bool onManager = false;
 
+    /// flag for application state
+    private bool isPaused = false;
+
     private void Start()
     {
 
         // Finds RudeManager instance for logger object
-        GameObject tempObj = GameObject.Find("RudeManager");
+        GameObject tempObj = GameObject.Find("DemoRudeManager");
         eventManagerInstance = tempObj.GetComponent<DemoEventsManager>();
 
 
@@ -132,7 +143,8 @@ public class DemoEventLogger : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Options == VerbEnum.OnDestroy)
+        /// isPaused identifies current state of game, destroyed log event will occur when exiting game if not implemented
+        if (Options == VerbEnum.OnDestroy && !isPaused)
         {
             eventManagerInstance.logger.LogEvent(Verb, Object, Payload);
             Debug.Log("Logged Event, Object: " + Object + " ,Verb: " + Verb);
@@ -210,6 +222,11 @@ public class DemoEventLogger : MonoBehaviour
         reader[0].SendMessage("WriteToScreen", textArray);
     }
 
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        isPaused = !hasFocus;
+    }
 
 
 }
