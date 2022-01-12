@@ -1,10 +1,10 @@
 <p align="center">
-     <img src="https://github.com/vmasc-capabilities-lab/RUDE/blob/main/github/RUDE_Black.png" height="150" alt="Main Map"/>
+     <img src="https://github.com/vmasc-capabilities-lab/RUDE/blob/main/github%7E/RUDE_Black.png" height="150" alt="Main Map"/>
 </p>
 
 # RUDE Description
 The Research Unity Data Extractor is a dynamic logging system used to read and print out events that occur within a Unity Scene.
-<img src="https://github.com/vmasc-capabilities-lab/RUDE/blob/main/github/Colliding.png" height="300" alt="Event Display"/>
+<img src="https://github.com/vmasc-capabilities-lab/RUDE/blob/main/github%7E/Colliding.png" height="300" alt="Event Display"/>
 
 ## Installation Guide
 
