@@ -6,25 +6,47 @@ using UnityEditor;
 using RUDE;
 using System;
 
-
+[HelpURL("https://github.com/vmasc-capabilities-lab/RUDE/wiki/How-to-Use#eventsmanager")]
 public class DemoEventsManager : MonoBehaviour
 {
-[SerializeField]
+    [SerializeField]
     public Log logger;
 
     [SerializeField]
-    public string Study;
+    [Tooltip("Unique string identifier for the log session.")]
+    public string SessionNameForLog;
+
+    [Header("Local")]
+
+    [SerializeField]
+    [Tooltip("The Path location you wish to store log files to. This must be an Absolute path.")]
+    public string FilePathToWriteLogsTo;
+
 
     [Header("Azure")]
 
     [SerializeField]
+    [Tooltip("Connection string used to access Azure Storage account.")]
     public string ConnectionString;
 
     [SerializeField]
+    [Tooltip("The type of file you wish to store the logs to.")]
     public File UploadFileType;
 
-    public void Awake()     //Allow Player to move from scene to scene
+    [Header("AWS")]
+
+    [SerializeField]
+    [Tooltip("An access key grants programmatic access to AWS resources")]
+    public string AccessKey;
+
+    [SerializeField]
+    [Tooltip("An access key...but secret...that grants programmatic access to AWS resources")]
+    public string SecretKey;
+
+
+    public void Awake()
     {
+        //Allows RudeManager to move from scene to scene
         DontDestroyOnLoad(this);
         if (FindObjectsOfType(GetType()).Length > 1)
         {
@@ -32,23 +54,37 @@ public class DemoEventsManager : MonoBehaviour
         }
     }
 
-    private void Start() {
+    private void Start()
+    {
 
-        logger = new Log(Study, Application.persistentDataPath.ToString());
-        Debug.Log(Application.persistentDataPath);
+        ///Init logger
+        logger = new Log(SessionNameForLog, Application.persistentDataPath.ToString());
+
+        Debug.Log("Temp log files located at :" + Application.persistentDataPath);
 
     }
 
-    private void OnApplicationQuit() {
 
+    private void OnApplicationQuit()
+    {
+        ///Log for Demo
         logger.LogEvent("Ended", "Scene");
 
-        if (!String.IsNullOrEmpty(ConnectionString))
+        ///When application quits, upload log to users choice
+        if (!String.IsNullOrEmpty(FilePathToWriteLogsTo))
         {
-            logger.uploadAzure(UploadFileType.ToString(), ConnectionString);            
+            logger.uploadLocal(UploadFileType.ToString(), FilePathToWriteLogsTo);
+        }
+        else if (!String.IsNullOrEmpty(ConnectionString))
+        {
+            logger.uploadAzure(UploadFileType.ToString(), ConnectionString);
+        }
+        else if (!String.IsNullOrEmpty(AccessKey) && !String.IsNullOrEmpty(SecretKey))
+        {
+            ///uploadAWS
         }
 
-        
+
     }
 
 }

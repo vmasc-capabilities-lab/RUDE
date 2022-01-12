@@ -13,24 +13,33 @@ public enum VerbEnum
     OnTriggerStay, OnEnable, OnDisable, OnScroll
 }
 
+[HelpURL("https://github.com/vmasc-capabilities-lab/RUDE/wiki/How-to-Use#eventlogger")]
 public class EventLogger : MonoBehaviour
 {
-
+    [SerializeField]
+    [Tooltip("The action that has occurred")]
     public string Verb;
 
+    [SerializeField]
+    [Tooltip("What has been modified by the Verb")]
     public string Object;
 
+    [SerializeField]
+    [Tooltip("Additional information tied to this event. This can be anything from a detail separating it from others logged, or a small description")]
     public string Payload;
 
     private EventsManager eventManagerInstance = null;
 
     [SerializeField]
+    [Tooltip("Indicates which Unity Event you wish to log when it occurs.")]
     public VerbEnum Options;
 
     /// flag for object created fir onCreate
     private bool created = false;
     /// flag for manager object created for onEnable
     private bool onManager = false;
+    /// flag for application state
+    private bool isPaused = false;
 
     private void Start()
     {
@@ -125,7 +134,7 @@ public class EventLogger : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Options == VerbEnum.OnDestroy)
+        if (Options == VerbEnum.OnDestroy && !isPaused)
         {
             eventManagerInstance.logger.LogEvent(Verb, Object, Payload);
         }
@@ -177,6 +186,11 @@ public class EventLogger : MonoBehaviour
         {
             eventManagerInstance.logger.LogEvent(Verb, Object, Payload);
         }
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        isPaused = !hasFocus;
     }
 
 
