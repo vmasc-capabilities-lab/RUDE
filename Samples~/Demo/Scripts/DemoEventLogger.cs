@@ -4,26 +4,26 @@ using UnityEngine;
 using UnityEngine.Events;
 using RUDE;
 
-[HelpURL("https://github.com/vmasc-capabilities-lab/RUDE/wiki")]
+[HelpURL("https://github.com/vmasc-capabilities-lab/RUDE/wiki/How-to-Use#eventlogger")]
 public class DemoEventLogger : MonoBehaviour
 {
 
     [SerializeField]
-    [Tooltip("Tooltip goes here!")]
+    [Tooltip("The action that has occurred")]
     public string Verb;
 
     [SerializeField]
-    [Tooltip("Tooltip goes here!")]
+    [Tooltip("What has been modified by the Verb")]
     public string Object;
 
     [SerializeField]
-    [Tooltip("Tooltip goes here!")]
+    [Tooltip("Additional information tied to this event. This can be anything from a detail separating it from others logged, or a small description")]
     public string Payload;
 
     private DemoEventsManager eventManagerInstance = null;
 
     [SerializeField]
-    [Tooltip("Tooltip goes here!")]
+    [Tooltip("Indicates which Unity Event you wish to log when it occurs.")]
     public VerbEnum Options;
 
     /// flag for object created fir onCreate

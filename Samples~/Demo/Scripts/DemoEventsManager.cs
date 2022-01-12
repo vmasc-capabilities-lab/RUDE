@@ -6,41 +6,41 @@ using UnityEditor;
 using RUDE;
 using System;
 
-[HelpURL("https://github.com/vmasc-capabilities-lab/RUDE/wiki")]
+[HelpURL("https://github.com/vmasc-capabilities-lab/RUDE/wiki/How-to-Use#eventsmanager")]
 public class DemoEventsManager : MonoBehaviour
 {
     [SerializeField]
     public Log logger;
 
     [SerializeField]
-    [Tooltip("Tooltip goes here!")]
+    [Tooltip("Unique string identifier for the log session.")]
     public string SessionNameForLog;
 
     [Header("Local")]
 
     [SerializeField]
-    [Tooltip("Tooltip goes here!")]
+    [Tooltip("The Path location you wish to store log files to. This must be an Absolute path.")]
     public string FilePathToWriteLogsTo;
 
 
     [Header("Azure")]
 
     [SerializeField]
-    [Tooltip("Tooltip goes here!")]
+    [Tooltip("Connection string used to access Azure Storage account.")]
     public string ConnectionString;
 
     [SerializeField]
-    [Tooltip("Tooltip goes here!")]
+    [Tooltip("The type of file you wish to store the logs to.")]
     public File UploadFileType;
 
     [Header("AWS")]
 
     [SerializeField]
-    [Tooltip("Tooltip goes here!")]
+    [Tooltip("An access key grants programmatic access to AWS resources")]
     public string AccessKey;
 
     [SerializeField]
-    [Tooltip("Tooltip goes here!")]
+    [Tooltip("An access key...but secret...that grants programmatic access to AWS resources")]
     public string SecretKey;
 
 
