@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEditor;
 using RUDE;
 using System;
+using Amazon;
 
 [HelpURL("https://github.com/vmasc-capabilities-lab/RUDE/wiki/How-to-Use#eventsmanager")]
 public class DemoEventsManager : MonoBehaviour
@@ -36,12 +37,26 @@ public class DemoEventsManager : MonoBehaviour
     [Header("AWS")]
 
     [SerializeField]
-    [Tooltip("An access key grants programmatic access to AWS resources")]
+    [Tooltip("An access key grants programmatic access to AWS resources.")]
     public string AccessKey;
 
     [SerializeField]
-    [Tooltip("An access key...but secret...that grants programmatic access to AWS resources")]
+    [Tooltip("An access key...but secret...that grants programmatic access to AWS resources.")]
     public string SecretKey;
+
+    [SerializeField]
+    [Tooltip("Name of the S3 bucket you wish to upload too.")]
+    public string BucketName;
+
+    [SerializeField]
+    [Tooltip("AWS Session Token, This may or may not be required depending on your AWS account type.")]
+    public string SessionToken;
+
+    [SerializeField]
+    [Tooltip("AWS Region where service is located.")]
+    public string AWSRegion;
+
+
 
 
     public void Awake()
@@ -60,7 +75,8 @@ public class DemoEventsManager : MonoBehaviour
         ///Init logger
         logger = new Log(SessionNameForLog, Application.persistentDataPath.ToString());
 
-        Debug.Log("Temp log files located at :" + Application.persistentDataPath);
+        Debug.Log("Temp log files located at: " + Application.persistentDataPath);
+
 
     }
 
@@ -81,7 +97,19 @@ public class DemoEventsManager : MonoBehaviour
         }
         else if (!String.IsNullOrEmpty(AccessKey) && !String.IsNullOrEmpty(SecretKey))
         {
-            ///uploadAWS
+
+            /// Get the RegionEndppoint class object from selection
+            RegionEndpoint endpointToSend = Amazon.RegionEndpoint.GetBySystemName(AWSRegion.Replace('_', '-'));
+
+            if (!String.IsNullOrEmpty(SessionToken))
+            {
+                logger.uploadAWS(AccessKey, SecretKey, SessionToken, BucketName, endpointToSend, UploadFileType.ToString());
+            }
+            else
+            {
+                logger.uploadAWS(AccessKey, SecretKey, BucketName, endpointToSend, UploadFileType.ToString());
+            }
+
         }
 
 

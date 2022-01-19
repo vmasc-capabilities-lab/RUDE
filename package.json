@@ -2,7 +2,7 @@
   "name": "com.vmasc-capabilities-lab.rude",
   "version": "1.0.0",
   "displayName": "RUDE",
-  "description": "This is unity package created for VMASC.",
+  "description": "This Unity package was created for the VRPL by the VMASC Capabilities Laboratory ",
   "unity": "2021.1",
   "unityRelease": "7f1",
   "documentationUrl": "https://github.com/vmasc-capabilities-lab/RUDE.git",
