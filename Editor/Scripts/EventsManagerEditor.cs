@@ -14,6 +14,8 @@ public class EventsManagerEditor : Editor
     // The enum field that will determine what variables to display in the Inspector
     public DisplayCategory categoryToDisplay;
 
+    public AWSRegionSystemName awsRegionSelected;
+
     // The function that makes the custom editor work
     public override void OnInspectorGUI()
     {
@@ -54,7 +56,6 @@ public class EventsManagerEditor : Editor
         EditorGUILayout.Space();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("UploadFileType"));
         EditorGUILayout.Space();
-
     }
 
     //When the categoryToDisplay enum is at "Combat"
@@ -65,7 +66,12 @@ public class EventsManagerEditor : Editor
         EditorGUILayout.Space();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("SecretKey"));
         EditorGUILayout.Space();
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("UploadFileType"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("BucketName"));
+        EditorGUILayout.Space();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("SessionToken"));
+        EditorGUILayout.Space();
+        awsRegionSelected = (AWSRegionSystemName)EditorGUILayout.EnumPopup("RegionEndpoint", awsRegionSelected);
+        serializedObject.FindProperty("AWSRegion").stringValue = awsRegionSelected.ToString();
     }
 
     //When the categoryToDisplay enum is at "Magic"

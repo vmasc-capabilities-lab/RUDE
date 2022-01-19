@@ -16,7 +16,9 @@
         "RUDE.dll",
         "System.Buffers.dll",
         "Azure.Storage.Blobs.dll",
-        "Azure.Core.dll"
+        "Azure.Core.dll",
+        "AWSSDK.Core.dll",
+        "AWSSDK.S3.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

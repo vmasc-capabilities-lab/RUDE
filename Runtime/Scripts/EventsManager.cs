@@ -5,11 +5,21 @@ using UnityEngine.Events;
 using UnityEditor;
 using RUDE;
 using System;
+using Amazon;
+
 
 
 public enum File
 {
     CSV, JSON, TXT
+}
+
+public enum AWSRegionSystemName
+{
+    us_east_2, us_east_1, us_west_1, us_west_2, af_south_1, ap_east_1, ap_southeast_3,
+    ap_south_1, ap_northeast_3, ap_northeast_2, ap_southeast_1, ap_southeast_2, ap_northeast_1,
+    ca_central_1, cn_north_1, cn_northwest_1, eu_central_1, eu_west_1, eu_west_2, eu_south_1,
+    eu_west_3, eu_north_1, me_south_1, sa_east_1
 }
 
 [HelpURL("https://github.com/vmasc-capabilities-lab/RUDE/wiki/How-to-Use#eventsmanager")]
@@ -42,12 +52,24 @@ public class EventsManager : MonoBehaviour
     [Header("AWS")]
 
     [SerializeField]
-    [Tooltip("An access key grants programmatic access to AWS resources")]
+    [Tooltip("An access key grants programmatic access to AWS resources.")]
     public string AccessKey;
 
     [SerializeField]
-    [Tooltip("An access key...but secret...that grants programmatic access to AWS resources")]
+    [Tooltip("An access key...but secret...that grants programmatic access to AWS resources.")]
     public string SecretKey;
+
+    [SerializeField]
+    [Tooltip("Name of the S3 bucket you wish to upload too.")]
+    public string BucketName;
+
+    [SerializeField]
+    [Tooltip("AWS Session Token, This may or may not be required depending on your AWS account type.")]
+    public string SessionToken;
+
+    [SerializeField]
+    [Tooltip("AWS Region where service is located.")]
+    public string AWSRegion;
 
 
     public void Awake()
@@ -74,6 +96,7 @@ public class EventsManager : MonoBehaviour
     private void OnApplicationQuit()
     {
 
+
         ///When application quits, upload log to users choice
         if (!String.IsNullOrEmpty(FilePathToWriteLogsTo))
         {
@@ -85,7 +108,19 @@ public class EventsManager : MonoBehaviour
         }
         else if (!String.IsNullOrEmpty(AccessKey) && !String.IsNullOrEmpty(SecretKey))
         {
-            ///uploadAWS
+
+            /// Get the RegionEndppoint class object from selection
+            RegionEndpoint endpointToSend = Amazon.RegionEndpoint.GetBySystemName(AWSRegion.Replace('_', '-'));
+
+            if (!String.IsNullOrEmpty(SessionToken))
+            {
+                logger.uploadAWS(AccessKey, SecretKey, SessionToken, BucketName, endpointToSend, UploadFileType.ToString());
+            }
+            else
+            {
+                logger.uploadAWS(AccessKey, SecretKey, BucketName, endpointToSend, UploadFileType.ToString());
+            }
+
         }
 
 

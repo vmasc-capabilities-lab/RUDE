@@ -8789,6 +8789,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8392198254850369943, guid: 15e6e729aa97843ffa18731fd8c772cf, type: 3}
+      propertyPath: AWSRegion
+      value: us_east_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392198254850369943, guid: 15e6e729aa97843ffa18731fd8c772cf, type: 3}
+      propertyPath: AccessKey
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392198254850369943, guid: 15e6e729aa97843ffa18731fd8c772cf, type: 3}
+      propertyPath: SecretKey
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392198254850369943, guid: 15e6e729aa97843ffa18731fd8c772cf, type: 3}
+      propertyPath: BucketName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392198254850369943, guid: 15e6e729aa97843ffa18731fd8c772cf, type: 3}
+      propertyPath: SessionToken
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392198254850369943, guid: 15e6e729aa97843ffa18731fd8c772cf, type: 3}
       propertyPath: ConnectionString
       value: 
       objectReference: {fileID: 0}
