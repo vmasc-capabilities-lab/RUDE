@@ -4,6 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using RUDE;
 
+/// <summary>
+/// Enum for drop down list in editor
+/// </summary>
+public enum VerbEnum
+{
+    OnMouseDown, OnMouseDrag, OnMouseEnter, OnMouseExit, OnMouseOver, OnCollisionEnter, OnCollisionExit, OnCollisionStay, OnDestroy, OnCreate, OnTriggerEnter, OnTriggerExit,
+    OnTriggerStay, OnEnable, OnDisable, OnScroll
+}
+
 [HelpURL("https://github.com/vmasc-capabilities-lab/RUDE/wiki/How-to-Use#eventlogger")]
 public class DemoEventLogger : MonoBehaviour
 {
