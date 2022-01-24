@@ -7,14 +7,16 @@
         "GUID:656e461844099ae43a609ff6109b0877",
         "GUID:bb05cab7d802aa5468f8f2f86840d984"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Android",
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
         "Newtonsoft.Json.dll",
         "RUDE.dll",
-        "System.Buffers.dll",
         "Azure.Storage.Blobs.dll",
         "Azure.Core.dll",
         "AWSSDK.Core.dll",
