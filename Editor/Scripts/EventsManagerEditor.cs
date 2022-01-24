@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(EventsManager))]
 public class EventsManagerEditor : Editor
 {
@@ -84,3 +85,4 @@ public class EventsManagerEditor : Editor
         EditorGUILayout.Space();
     }
 }
+#endif
