@@ -74,7 +74,7 @@ public class EventsManager : MonoBehaviour
 
     public void Awake()
     {
-        //Allows RudeManager to move from scene to scene
+        //Allows RudeManager to move from scene to scene.
         DontDestroyOnLoad(this);
         if (FindObjectsOfType(GetType()).Length > 1)
         {
